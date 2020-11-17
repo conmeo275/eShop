@@ -16,4 +16,8 @@
     <ProjectReference Include="..\eShop.WebApp\eShop.WebApp.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\user-content\" />
+  </ItemGroup>
+
 </Project>
