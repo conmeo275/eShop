@@ -22,10 +22,10 @@ namespace eShop.LogicApp.Catalog.Products
     {
         private readonly EShopDbContext _context;
         private readonly IStorageService _storageService;
-        public ManageProductService(EShopDbContext context)
+        public ManageProductService(EShopDbContext context, IStorageService storageService)
         {
             _context = context;
-           // _storageService = storageService;
+            _storageService = storageService;
         }
 
         public async Task AddViewCount(int productId)
