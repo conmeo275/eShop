@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eShop.Data.EF;
-using eShop.LogicApp.Catalog.Common;
+using eShop.Data.Entities;
 using eShop.LogicApp.Catalog.Products;
+using eShop.LogicApp.Common;
+using eShop.LogicApp.System.Users;
 using eShop.Utilities.Constants;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,11 +35,17 @@ namespace eShop.BackendApi
         {
             services.AddDbContext<EShopDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
-
+            services.AddIdentity<AppUser, AppRole>()
+                .AddEntityFrameworkStores<EShopDbContext>()
+                .AddDefaultTokenProviders();
             //DI
             services.AddTransient<IPublicProductService, PublicProductService>();
             services.AddTransient<IManageProductService, ManageProductService>();
             services.AddTransient<IStorageService, FileStorageService>();
+            services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
+            services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
+            services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
+            services.AddTransient<IUserService, UserService>();
 
             services.AddSwaggerGen(c =>
             {

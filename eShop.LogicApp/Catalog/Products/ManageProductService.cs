@@ -12,9 +12,9 @@ using Microsoft.AspNetCore.Http;
 using System.Net.Mime;
 using System.Net.Http.Headers;
 using System.IO;
-using eShop.LogicApp.Catalog.Common;
 using eShop.Utilities.Exceptions;
 using eShop.ViewModel.Catalog.Product.Images;
+using eShop.LogicApp.Common;
 
 namespace eShop.LogicApp.Catalog.Products
 {

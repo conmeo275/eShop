@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShop.LogicApp.Catalog.Common
+namespace eShop.LogicApp.Common
 {
     public class FileStorageService : IStorageService
     {
