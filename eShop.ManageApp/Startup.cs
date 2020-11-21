@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using eShop.ManageApp.Services;
 using eShop.ViewModel.System.Users;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,13 @@ namespace eShop.ManageApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpClient();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Users/Login/";
+                    options.AccessDeniedPath = "/Users/Forbidden/";
+                });
 
             services.AddControllersWithViews()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>()); ;
@@ -58,6 +66,8 @@ namespace eShop.ManageApp
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseRouting();
 
