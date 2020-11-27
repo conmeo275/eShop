@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace eShop.ViewModel.Catalog.Product.Public
+namespace eShop.ViewModel.Catalog.Products
 {
-    public class GetProductPagingRequestPublic : PagingRequestBase
+    public class GetPublicProductPagingRequest : PagingRequestBase
     {
         public int? CategoryId { get; set; }
     }

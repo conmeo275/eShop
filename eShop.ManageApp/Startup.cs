@@ -29,6 +29,8 @@ namespace eShop.ManageApp
         {
             services.AddHttpClient();
 
+
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
@@ -38,6 +40,11 @@ namespace eShop.ManageApp
 
             services.AddControllersWithViews()
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>()); ;
+
+            services.AddSession(option =>
+            {
+                option.IdleTimeout = TimeSpan.FromSeconds(30);
+            });
 
             services.AddTransient<IUserApiClient, UserApiClient>();
 
@@ -72,7 +79,7 @@ namespace eShop.ManageApp
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

@@ -10,6 +10,7 @@ namespace eShop.Data.EF
 {
     public class EShopDbContextFactory : IDesignTimeDbContextFactory<EShopDbContext>
     {
+        [Obsolete]
         public EShopDbContext CreateDbContext(string[] args)
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()

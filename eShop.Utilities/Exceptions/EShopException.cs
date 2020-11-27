@@ -7,9 +7,15 @@ namespace eShop.Utilities.Exceptions
     public class EShopException : Exception
     {
         public EShopException() { }
+
         public EShopException(string messenge)
         {
 
+        }
+
+        public EShopException(string message, Exception inner)
+            : base(message, inner)
+        {
         }
     }
 }

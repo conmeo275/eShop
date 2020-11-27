@@ -1,12 +1,9 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using eShop.Data.EF;
-using eShop.Data.Entities;
 using eShop.LogicApp.Catalog.Products;
 using eShop.LogicApp.Common;
 using eShop.LogicApp.System.Users;
+using eShop.Data.EF;
+using eShop.Data.Entities;
 using eShop.Utilities.Constants;
 using eShop.ViewModel.System.Users;
 using FluentValidation;
@@ -14,14 +11,12 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 
 namespace eShop.BackendApi
@@ -38,27 +33,31 @@ namespace eShop.BackendApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<EShopDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
+            services.AddEntityFrameworkSqlServer()
+                .AddDbContext<EShopDbContext>(options =>
+                  options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
+
+            //services.AddDbContext<EShopDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
 
             services.AddIdentity<AppUser, AppRole>()
                 .AddEntityFrameworkStores<EShopDbContext>()
                 .AddDefaultTokenProviders();
 
             //Declare DI
-            services.AddTransient<IPublicProductService, PublicProductService>();
-            services.AddTransient<IManageProductService, ManageProductService>();
             services.AddTransient<IStorageService, FileStorageService>();
+
+            services.AddTransient<IProductService, ProductService>();
             services.AddTransient<UserManager<AppUser>, UserManager<AppUser>>();
             services.AddTransient<SignInManager<AppUser>, SignInManager<AppUser>>();
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
             services.AddTransient<IUserService, UserService>();
 
-            //Fluent validation login/register
             //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             //services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
 
-            services.AddControllers().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
+            services.AddControllers()
+                .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<LoginRequestValidator>());
 
             services.AddSwaggerGen(c =>
             {
@@ -138,15 +137,15 @@ namespace eShop.BackendApi
             app.UseStaticFiles();
 
             app.UseAuthentication();
-
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseSwagger();
+
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger eShop Solution V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger eShopSolution V1");
             });
 
             app.UseEndpoints(endpoints =>
