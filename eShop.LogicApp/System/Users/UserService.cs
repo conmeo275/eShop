@@ -72,10 +72,11 @@ namespace eShop.LogicApp.System.Users
             }
 
             //3. Paging
-
             int totalRow = await query.CountAsync();
-            int skipRows = (request.PageIndex - 1)* request.PageSize;
-            var data = await query.Select(x => new UserVm()
+
+            var data = await query.Skip((request.PageIndex - 1) * request.PageSize)
+                .Take(request.PageSize)
+                .Select(x => new UserVm()
                 {
                     Email = x.Email,
                     PhoneNumber = x.PhoneNumber,
@@ -83,7 +84,7 @@ namespace eShop.LogicApp.System.Users
                     FirstName = x.FirstName,
                     Id = x.Id,
                     LastName = x.LastName
-                }).Skip(skipRows).Take(request.PageSize).ToListAsync();
+                }).ToListAsync();
 
             //4. Select and projection
             var pagedResult = new PagedResult<UserVm>()
@@ -112,7 +113,5 @@ namespace eShop.LogicApp.System.Users
             }
             return false;
         }
-
-        
     }
 }

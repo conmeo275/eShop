@@ -17,40 +17,27 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace eShop.ManageApp.Controllers
 {
-    public class UsersController : Controller
+    public class LoginController : Controller
     {
         private readonly IUserApiClient _userApiClient;
         private readonly IConfiguration _configuration;
 
-        public UsersController(IUserApiClient userApiClient, IConfiguration configuration)
+        public LoginController(IUserApiClient userApiClient,
+            IConfiguration configuration)
         {
             _userApiClient = userApiClient;
             _configuration = configuration;
         }
 
-        public async Task<IActionResult> Index(string key, int pageIndex = 1, int pageSize = 10)
-        {
-            var sessions = HttpContext.Session.GetString("Token");
-            var request = new GetUserPagingRequest()
-            {
-                BearerToken = sessions,
-                Keyword = key,
-                PageIndex = pageIndex,
-                PageSize = pageSize
-            };
-            var data =  await _userApiClient.GetUsersPagings(request);
-            return View(data);
-        }
-
         [HttpGet]
-        public async Task<IActionResult> Login()
+        public async Task<IActionResult> Index()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginRequest request)
+        public async Task<IActionResult> Index(LoginRequest request)
         {
             if (!ModelState.IsValid)
                 return View(ModelState);
@@ -70,14 +57,6 @@ namespace eShop.ManageApp.Controllers
                         authProperties);
 
             return RedirectToAction("Index", "Home");
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Logout()
-        {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            HttpContext.Session.Remove("Token");
-            return RedirectToAction("Login", "Users");
         }
 
         private ClaimsPrincipal ValidateToken(string jwtToken)
