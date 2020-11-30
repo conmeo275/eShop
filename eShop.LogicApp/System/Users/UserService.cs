@@ -37,7 +37,8 @@ namespace eShop.LogicApp.System.Users
         public async Task<ApiResult<string>> Authencate(LoginRequest request)
         {
             var user = await _userManager.FindByNameAsync(request.UserName);
-            if (user == null) return null;
+            if (user == null) 
+                return new ApiErrorResult<string>("Đăng nhập không đúng");
 
             var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, true);
             if (!result.Succeeded)
