@@ -1,4 +1,5 @@
 ﻿using eShop.ViewModel.Common;
+using eShop.ViewModel.System.Roles;
 using eShop.ViewModel.System.Users;
 using System;
 using System.Collections.Generic;
@@ -20,5 +21,7 @@ namespace eShop.LogicApp.System.Users
         Task<ApiResult<UserVm>> GetById(Guid id);
 
         Task<ApiResult<bool>> Delete(Guid id);
+
+        Task<ApiResult<bool>> RoleAssign(Guid id, RoleAssignRequest request);
     }
 }

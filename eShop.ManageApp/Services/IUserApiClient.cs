@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eShop.ViewModel.Common;
+using eShop.ViewModel.System.Roles;
 using eShop.ViewModel.System.Users;
 
 namespace eShop.ManageApp.Services
@@ -20,5 +21,7 @@ namespace eShop.ManageApp.Services
         Task<ApiResult<UserVm>> GetById(Guid id);
 
         Task<ApiResult<bool>> Delete(Guid id);
+
+        Task<ApiResult<bool>> RoleAssign(Guid id, RoleAssignRequest request);
     }
 }
