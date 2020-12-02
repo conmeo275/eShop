@@ -1,0 +1,25 @@
+﻿using eShop.ViewModel.Common;
+using eShop.ViewModel.System.Languages;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+namespace eShop.ManageApp.Services
+{
+    public class LanguageApiClient : BaseApiClient, ILanguageApiClient
+    {
+        public LanguageApiClient(IHttpClientFactory httpClientFactory,
+                   IHttpContextAccessor httpContextAccessor,
+                    IConfiguration configuration)
+            : base(httpClientFactory, httpContextAccessor, configuration)
+        {
+        }
+
+        public async Task<ApiResult<List<LanguageVm>>> GetAll()
+        {
+            return await GetAsync<ApiResult<List<LanguageVm>>>("/api/languages");
+        }
+    }
+}

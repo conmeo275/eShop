@@ -6,7 +6,6 @@ using eShop.Data.EF;
 using eShop.Data.Entities;
 using eShop.Utilities.Constants;
 using eShop.ViewModel.System.Users;
-using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -19,6 +18,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using eShop.LogicApp.System.Roles;
+using eShop.LogicApp.System.Languages;
 
 namespace eShop.BackendApi
 {
@@ -54,6 +54,7 @@ namespace eShop.BackendApi
             services.AddTransient<RoleManager<AppRole>, RoleManager<AppRole>>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
+            services.AddTransient<ILanguageService, LanguageService>();
 
             //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             //services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
