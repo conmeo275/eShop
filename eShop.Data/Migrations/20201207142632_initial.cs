@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace eShop.Data.Migrations
 {
-    public partial class InitialincludeSeedData : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -449,7 +449,7 @@ namespace eShop.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AppRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
-                values: new object[] { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "c6a40b03-00ec-438a-b59f-6cf4be0a168b", "Administrator role", "admin", "admin" });
+                values: new object[] { new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"), "968ed7f2-02e8-46c0-a2f0-6de77534abe8", "Administrator role", "admin", "admin" });
 
             migrationBuilder.InsertData(
                 table: "AppUserRoles",
@@ -459,7 +459,7 @@ namespace eShop.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AppUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Dob", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"), 0, "869b3189-1c78-4e5f-b168-a6939c4784fb", new DateTime(2020, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "thanhdat2751999@gmail.com", true, "Nguyen", "Thanh Dat", false, null, "thanhdat2751999@gmail.com", "admin", "AQAAAAEAACcQAAAAEGC/1GdED9q6u6liCr2Eos/PbXRpkJYRX3jeuHO27TWTzmSW0cU5aiYREYLwsUdclw==", null, false, "", false, "admin" });
+                values: new object[] { new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"), 0, "ddb06986-56ab-4c84-8cca-63e8e9bec2da", new DateTime(2020, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "thanhdat2751999@gmail.com", true, "Nguyen", "Thanh Dat", false, null, "thanhdat2751999@gmail.com", "admin", "AQAAAAEAACcQAAAAEIb+XKKru6+Ove285YcEe7dmKjwxLGbVxstcwYjljgHn36vgwSm1w6uxbs10+JWong==", null, false, "", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
@@ -475,24 +475,24 @@ namespace eShop.Data.Migrations
                 columns: new[] { "Id", "IsDefault", "Name" },
                 values: new object[,]
                 {
-                    { "vi-VN", true, "Tiếng Việt" },
-                    { "en-US", false, "English" }
+                    { "vi", true, "Tiếng Việt" },
+                    { "en", false, "English" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "DateCreated", "OriginalPrice", "Price", "SeoAlias" },
-                values: new object[] { 1, new DateTime(2020, 11, 26, 13, 44, 52, 938, DateTimeKind.Local).AddTicks(3394), 100000m, 200000m, null });
+                values: new object[] { 1, new DateTime(2020, 12, 7, 21, 26, 31, 219, DateTimeKind.Local).AddTicks(12), 100000m, 200000m, null });
 
             migrationBuilder.InsertData(
                 table: "CategoryTranslations",
                 columns: new[] { "Id", "CategoryId", "LanguageId", "Name", "SeoAlias", "SeoDescription", "SeoTitle" },
                 values: new object[,]
                 {
-                    { 1, 1, "vi-VN", "Bánh bông lan", "banh-bong-lan", "Bánh bông lan Description", "Bánh bông lan Title" },
-                    { 3, 2, "vi-VN", "Bánh trung thu", "banh-trung thu", "Bánh trung thu Description", "Bánh trung thu Title" },
-                    { 2, 1, "en-US", "Bong lan banh", "bong-lan-banh", "Bong lan banh Description", "Bong lan banh Title" },
-                    { 4, 2, "en-US", "Trung thu banh", "trung-thu-banh", "Trung thu banh Description", "Trung thu banh Title" }
+                    { 1, 1, "vi", "Bánh bông lan", "banh-bong-lan", "Bánh bông lan Description", "Bánh bông lan Title" },
+                    { 3, 2, "vi", "Bánh trung thu", "banh-trung thu", "Bánh trung thu Description", "Bánh trung thu Title" },
+                    { 2, 1, "en", "Bong lan banh", "bong-lan-banh", "Bong lan banh Description", "Bong lan banh Title" },
+                    { 4, 2, "en", "Trung thu banh", "trung-thu-banh", "Trung thu banh Description", "Trung thu banh Title" }
                 });
 
             migrationBuilder.InsertData(
@@ -505,8 +505,8 @@ namespace eShop.Data.Migrations
                 columns: new[] { "Id", "Description", "Details", "LanguageId", "Name", "ProductId", "SeoAlias", "SeoDescription", "SeoTitle" },
                 values: new object[,]
                 {
-                    { 1, "Bánh bông lan trứng muối", "Bánh bông lan trứng muối", "vi-VN", "Bánh bông lan trứng muối", 1, "Bánh bông lan trứng muối", "Bánh bông lan trứng muối", "Bánh bông lan trứng muối" },
-                    { 2, "Banh bong lan trung muoi", "Banh bong lan trung muoi", "en-US", "Banh bong lan trung muoi", 1, "banh-bong-lan-trung-muoi", "Banh bong lan trung muoi", "Banh bong lan trung muoi" }
+                    { 1, "Bánh bông lan trứng muối", "Bánh bông lan trứng muối", "vi", "Bánh bông lan trứng muối", 1, "Bánh bông lan trứng muối", "Bánh bông lan trứng muối", "Bánh bông lan trứng muối" },
+                    { 2, "Banh bong lan trung muoi", "Banh bong lan trung muoi", "en    ", "Banh bong lan trung muoi", 1, "banh-bong-lan-trung-muoi", "Banh bong lan trung muoi", "Banh bong lan trung muoi" }
                 });
 
             migrationBuilder.CreateIndex(

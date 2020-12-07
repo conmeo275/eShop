@@ -10,8 +10,8 @@ using eShop.Data.EF;
 namespace eShop.Data.Migrations
 {
     [DbContext(typeof(EShopDbContext))]
-    [Migration("20201126064454_InitialincludeSeedData")]
-    partial class InitialincludeSeedData
+    [Migration("20201207142632_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -182,7 +182,7 @@ namespace eShop.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "c6a40b03-00ec-438a-b59f-6cf4be0a168b",
+                            ConcurrencyStamp = "968ed7f2-02e8-46c0-a2f0-6de77534abe8",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -259,7 +259,7 @@ namespace eShop.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "869b3189-1c78-4e5f-b168-a6939c4784fb",
+                            ConcurrencyStamp = "ddb06986-56ab-4c84-8cca-63e8e9bec2da",
                             Dob = new DateTime(2020, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "thanhdat2751999@gmail.com",
                             EmailConfirmed = true,
@@ -268,7 +268,7 @@ namespace eShop.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "thanhdat2751999@gmail.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGC/1GdED9q6u6liCr2Eos/PbXRpkJYRX3jeuHO27TWTzmSW0cU5aiYREYLwsUdclw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIb+XKKru6+Ove285YcEe7dmKjwxLGbVxstcwYjljgHn36vgwSm1w6uxbs10+JWong==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -396,7 +396,7 @@ namespace eShop.Data.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            LanguageId = "vi-VN",
+                            LanguageId = "vi",
                             Name = "Bánh bông lan",
                             SeoAlias = "banh-bong-lan",
                             SeoDescription = "Bánh bông lan Description",
@@ -406,7 +406,7 @@ namespace eShop.Data.Migrations
                         {
                             Id = 2,
                             CategoryId = 1,
-                            LanguageId = "en-US",
+                            LanguageId = "en",
                             Name = "Bong lan banh",
                             SeoAlias = "bong-lan-banh",
                             SeoDescription = "Bong lan banh Description",
@@ -416,7 +416,7 @@ namespace eShop.Data.Migrations
                         {
                             Id = 3,
                             CategoryId = 2,
-                            LanguageId = "vi-VN",
+                            LanguageId = "vi",
                             Name = "Bánh trung thu",
                             SeoAlias = "banh-trung thu",
                             SeoDescription = "Bánh trung thu Description",
@@ -426,7 +426,7 @@ namespace eShop.Data.Migrations
                         {
                             Id = 4,
                             CategoryId = 2,
-                            LanguageId = "en-US",
+                            LanguageId = "en",
                             Name = "Trung thu banh",
                             SeoAlias = "trung-thu-banh",
                             SeoDescription = "Trung thu banh Description",
@@ -490,13 +490,13 @@ namespace eShop.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "vi-VN",
+                            Id = "vi",
                             IsDefault = true,
                             Name = "Tiếng Việt"
                         },
                         new
                         {
-                            Id = "en-US",
+                            Id = "en",
                             IsDefault = false,
                             Name = "English"
                         });
@@ -604,7 +604,7 @@ namespace eShop.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2020, 11, 26, 13, 44, 52, 938, DateTimeKind.Local).AddTicks(3394),
+                            DateCreated = new DateTime(2020, 12, 7, 21, 26, 31, 219, DateTimeKind.Local).AddTicks(12),
                             OriginalPrice = 100000m,
                             Price = 200000m,
                             Stock = 0,
@@ -728,7 +728,7 @@ namespace eShop.Data.Migrations
                             Id = 1,
                             Description = "Bánh bông lan trứng muối",
                             Details = "Bánh bông lan trứng muối",
-                            LanguageId = "vi-VN",
+                            LanguageId = "vi",
                             Name = "Bánh bông lan trứng muối",
                             ProductId = 1,
                             SeoAlias = "Bánh bông lan trứng muối",
@@ -740,7 +740,7 @@ namespace eShop.Data.Migrations
                             Id = 2,
                             Description = "Banh bong lan trung muoi",
                             Details = "Banh bong lan trung muoi",
-                            LanguageId = "en-US",
+                            LanguageId = "en    ",
                             Name = "Banh bong lan trung muoi",
                             ProductId = 1,
                             SeoAlias = "banh-bong-lan-trung-muoi",

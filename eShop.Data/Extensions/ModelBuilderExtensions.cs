@@ -18,8 +18,8 @@ namespace eShop.Data.Extensions
                new AppConfig() { Key = "HomeDescription", Value = "This is description of eShopSolution" }
                );
             modelBuilder.Entity<Language>().HasData(
-                new Language() { Id = "vi-VN", Name = "Tiếng Việt", IsDefault = true },
-                new Language() { Id = "en-US", Name = "English", IsDefault = false });
+                new Language() { Id = "vi", Name = "Tiếng Việt", IsDefault = true },
+                new Language() { Id = "en", Name = "English", IsDefault = false });
 
             modelBuilder.Entity<Category>().HasData(
                 new Category()
@@ -40,10 +40,10 @@ namespace eShop.Data.Extensions
                  });
 
             modelBuilder.Entity<CategoryTranslation>().HasData(
-                  new CategoryTranslation() { Id = 1, CategoryId = 1, Name = "Bánh bông lan", LanguageId = "vi-VN", SeoAlias = "banh-bong-lan", SeoDescription = "Bánh bông lan Description", SeoTitle = "Bánh bông lan Title" },
-                  new CategoryTranslation() { Id = 2, CategoryId = 1, Name = "Bong lan banh", LanguageId = "en-US", SeoAlias = "bong-lan-banh", SeoDescription = "Bong lan banh Description", SeoTitle = "Bong lan banh Title" },
-                  new CategoryTranslation() { Id = 3, CategoryId = 2, Name = "Bánh trung thu", LanguageId = "vi-VN", SeoAlias = "banh-trung thu", SeoDescription = "Bánh trung thu Description", SeoTitle = "Bánh trung thu Title" },
-                  new CategoryTranslation() { Id = 4, CategoryId = 2, Name = "Trung thu banh", LanguageId = "en-US", SeoAlias = "trung-thu-banh", SeoDescription = "Trung thu banh Description", SeoTitle = "Trung thu banh Title" }
+                  new CategoryTranslation() { Id = 1, CategoryId = 1, Name = "Bánh bông lan", LanguageId = "vi", SeoAlias = "banh-bong-lan", SeoDescription = "Bánh bông lan Description", SeoTitle = "Bánh bông lan Title" },
+                  new CategoryTranslation() { Id = 2, CategoryId = 1, Name = "Bong lan banh", LanguageId = "en", SeoAlias = "bong-lan-banh", SeoDescription = "Bong lan banh Description", SeoTitle = "Bong lan banh Title" },
+                  new CategoryTranslation() { Id = 3, CategoryId = 2, Name = "Bánh trung thu", LanguageId = "vi", SeoAlias = "banh-trung thu", SeoDescription = "Bánh trung thu Description", SeoTitle = "Bánh trung thu Title" },
+                  new CategoryTranslation() { Id = 4, CategoryId = 2, Name = "Trung thu banh", LanguageId = "en", SeoAlias = "trung-thu-banh", SeoDescription = "Trung thu banh Description", SeoTitle = "Trung thu banh Title" }
                     );
 
             modelBuilder.Entity<Product>().HasData(
@@ -62,7 +62,7 @@ namespace eShop.Data.Extensions
                      Id = 1,
                      ProductId = 1,
                      Name = "Bánh bông lan trứng muối",
-                     LanguageId = "vi-VN",
+                     LanguageId = "vi",
                      SeoAlias = "Bánh bông lan trứng muối",
                      SeoDescription = "Bánh bông lan trứng muối",
                      SeoTitle = "Bánh bông lan trứng muối",
@@ -74,7 +74,7 @@ namespace eShop.Data.Extensions
                         Id = 2,
                         ProductId = 1,
                         Name = "Banh bong lan trung muoi",
-                        LanguageId = "en-US",
+                        LanguageId = "en    ",
                         SeoAlias = "banh-bong-lan-trung-muoi",
                         SeoDescription = "Banh bong lan trung muoi",
                         SeoTitle = "Banh bong lan trung muoi",
