@@ -19,6 +19,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using eShop.LogicApp.System.Roles;
 using eShop.LogicApp.System.Languages;
+using eShop.LogicApp.Catalog.Categories;
 
 namespace eShop.BackendApi
 {
@@ -55,6 +56,7 @@ namespace eShop.BackendApi
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<ILanguageService, LanguageService>();
+            services.AddTransient<ICategoryService, CategoryService>();
 
             //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             //services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
