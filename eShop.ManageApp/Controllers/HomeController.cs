@@ -23,6 +23,7 @@ namespace eShop.ManageApp.Controllers
 
         public IActionResult Index()
         {
+            var user = User.Identity.Name;
             return View();
         }
 
@@ -43,7 +44,7 @@ namespace eShop.ManageApp.Controllers
             HttpContext.Session.SetString(SystemConstants.AppSettings.DefaultLanguageId,
                 viewModel.CurrentLanguageId);
 
-            return RedirectToAction("Index");
+            return Redirect(viewModel.ReturnUrl);
         }
     }
 }

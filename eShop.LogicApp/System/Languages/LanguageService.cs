@@ -26,7 +26,8 @@ namespace eShop.LogicApp.System.Languages
             var languages = await _context.Languages.Select(x => new LanguageVm()
             {
                 Id = x.Id,
-                Name = x.Name
+                Name = x.Name,
+                IsDefault = x.IsDefault
             }).ToListAsync();
             return new ApiSuccessResult<List<LanguageVm>>(languages);
         }
