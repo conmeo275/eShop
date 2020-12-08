@@ -6,7 +6,7 @@ using eShop.ViewModel.Common;
 using eShop.ViewModel.System.Roles;
 using eShop.ViewModel.System.Users;
 
-namespace eShop.ManageApp.Services
+namespace eShop.ApiIntegration
 {
     public interface IUserApiClient
     {

@@ -12,7 +12,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShop.ManageApp.Services
+namespace eShop.ApiIntegration
 {
     public class UserApiClient : IUserApiClient
     {

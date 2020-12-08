@@ -13,9 +13,9 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShop.ManageApp.Services
+namespace eShop.ApiIntegration
 {
-    public class ProductApiClient  :BaseApiClient, IProductApiClient
+    public class ProductApiClient : BaseApiClient, IProductApiClient
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IHttpClientFactory _httpClientFactory;
