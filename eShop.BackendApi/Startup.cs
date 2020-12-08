@@ -20,6 +20,7 @@ using Microsoft.OpenApi.Models;
 using eShop.LogicApp.System.Roles;
 using eShop.LogicApp.System.Languages;
 using eShop.LogicApp.Catalog.Categories;
+using eShop.LogicApp.Utilities.Slides;
 
 namespace eShop.BackendApi
 {
@@ -57,6 +58,8 @@ namespace eShop.BackendApi
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<ILanguageService, LanguageService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<ISlideService, SlideService>();
+
 
             //services.AddTransient<IValidator<LoginRequest>, LoginRequestValidator>();
             //services.AddTransient<IValidator<RegisterRequest>, RegisterRequestValidator>();
