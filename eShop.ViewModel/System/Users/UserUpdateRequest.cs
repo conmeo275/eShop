@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace eShop.ViewModel.System.Users
 {
@@ -19,7 +17,7 @@ namespace eShop.ViewModel.System.Users
         [DataType(DataType.Date)]
         public DateTime Dob { get; set; }
 
-        [Display(Name = "Email")]
+        [Display(Name = "Hòm thư")]
         public string Email { get; set; }
 
         [Display(Name = "Số điện thoại")]

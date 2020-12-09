@@ -1,10 +1,7 @@
 ﻿using eShop.ViewModel.Catalog.Categories;
 using eShop.ViewModel.Catalog.ProductImages;
 using eShop.ViewModel.Catalog.Products;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace eShop.WebApp.Models
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace eShop.ViewModel.Common
+﻿namespace eShop.ViewModel.Common
 {
     public class ApiErrorResult<T> : ApiResult<T>
     {

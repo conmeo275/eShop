@@ -1,8 +1,11 @@
-﻿using eShop.LogicApp.Common;
-using eShop.Data.EF;
+﻿using eShop.Data.EF;
 using eShop.Data.Entities;
+using eShop.LogicApp.Common;
+using eShop.Utilities.Constants;
 using eShop.Utilities.Exceptions;
 using eShop.ViewModel.Catalog.ProductImages;
+using eShop.ViewModel.Catalog.Products;
+using eShop.ViewModel.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,11 +13,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
-using eShop.ViewModel.Catalog.Products;
-using eShop.ViewModel.Common;
-using eShop.Utilities.Constants;
 
 namespace eShop.LogicApp.Catalog.Products
 {
@@ -22,6 +21,7 @@ namespace eShop.LogicApp.Catalog.Products
     {
         private readonly EShopDbContext _context;
         private readonly IStorageService _storageService;
+        private const string USER_CONTENT_FOLDER_NAME = "user-content";
 
         public ProductService(EShopDbContext context, IStorageService storageService)
         {
@@ -201,6 +201,8 @@ namespace eShop.LogicApp.Catalog.Products
                                     where pic.ProductId == productId && ct.LanguageId == languageId
                                     select ct.Name).ToListAsync();
 
+            var image = await _context.ProductImages.Where(x => x.ProductId == productId && x.IsDefault == true).FirstOrDefaultAsync();
+
             var productViewModel = new ProductVm()
             {
                 Id = product.Id,
@@ -216,7 +218,8 @@ namespace eShop.LogicApp.Catalog.Products
                 SeoTitle = productTranslation != null ? productTranslation.SeoTitle : null,
                 Stock = product.Stock,
                 ViewCount = product.ViewCount,
-                Categories = categories
+                Categories = categories,
+                ThumbnailImage = image != null ? image.Path : "no-image.jpg"
             };
             return productViewModel;
         }
@@ -332,7 +335,7 @@ namespace eShop.LogicApp.Catalog.Products
             var originalFileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
             var fileName = $"{Guid.NewGuid()}{Path.GetExtension(originalFileName)}";
             await _storageService.SaveFileAsync(file.OpenReadStream(), fileName);
-            return fileName;
+            return "/" + USER_CONTENT_FOLDER_NAME + "/" + fileName;
         }
 
         public async Task<PagedResult<ProductVm>> GetAllByCategoryId(string languageId, GetPublicProductPagingRequest request)

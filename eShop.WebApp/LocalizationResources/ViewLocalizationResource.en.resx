@@ -126,7 +126,7 @@
     <comment>/Product/Category</comment>
   </data>
   <data name="categoryUrl" xml:space="preserve">
-    <value>categoryUrl</value>
+    <value>categories</value>
     <comment>Layouts</comment>
   </data>
   <data name="Contact" xml:space="preserve">

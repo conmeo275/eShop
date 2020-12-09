@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using eShop.ViewModel.Common;
-using eShop.ViewModel.System.Roles;
+﻿using eShop.ViewModel.Common;
 using eShop.ViewModel.System.Users;
+using System;
+using System.Threading.Tasks;
 
 namespace eShop.ApiIntegration
 {

@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace eShop.ViewModel.Catalog.Products
 {
@@ -20,6 +17,5 @@ namespace eShop.ViewModel.Catalog.Products
         public bool? IsFeatured { get; set; }
 
         public IFormFile ThumbnailImage { get; set; }
-
     }
 }

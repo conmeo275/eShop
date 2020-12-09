@@ -1,8 +1,6 @@
 ﻿using eShop.ViewModel.Catalog.Products;
 using eShop.ViewModel.Common;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace eShop.ApiIntegration
@@ -22,5 +20,7 @@ namespace eShop.ApiIntegration
         Task<List<ProductVm>> GetFeaturedProducts(string languageId, int take);
 
         Task<List<ProductVm>> GetLatestProducts(string languageId, int take);
+
+        Task<bool> DeleteProduct(int id);
     }
 }

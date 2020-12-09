@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace eShop.ViewModel.System.Users
 {
     public class UserVm
     {
         public Guid Id { get; set; }
+
         [Display(Name = "Tên")]
         public string FirstName { get; set; }
 
